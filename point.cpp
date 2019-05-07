@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -14,8 +14,8 @@ class point
 		void setX(double);
 		void setY(double);
 		//getters
-		double getX();
-		double getY();
+		double getX()const;
+		double getY()const;
 };	
 class HCN
 {
@@ -41,8 +41,15 @@ class HCN
 
 int main()
 {
-	
+	point a;
+	a.setX(4.0);
+	a.setY(6.0);
+	point b(2.0,2.0);
+	HCN c(a,b);
+	cout<<c.getS()<<endl;
+	cout<<c.getC()<<endl;
 }
+point::point(){}
 point::point(double a,double b)
 {
 	this -> x=a;
@@ -52,7 +59,7 @@ void point::setX(double a)
 {
 	this ->x=a;
 }
-void point::setY(double b)
+void point::setY(double b)ude 
 {
 	this ->y=b;
 }
@@ -73,12 +80,12 @@ HCN::HCN(point tl,point br)
 HCN::HCN(double x1,double y1,double x2,double y2):tl(x1,x2),br(x2,y2){}
 bool HCN::settl(const point &a)
 {
-	this->x=a;
+	this->tl=a;
 	return true;
 }
 bool HCN::setbr(const point &b)
 {
-	this->x=b;
+	this->br=b;
 	return true;
 }
 bool HCN::settl(double a,double b)
@@ -86,30 +93,26 @@ bool HCN::settl(double a,double b)
 	this->tl=point(a,b);
 	return true;
 }
-bool HCn::setbr(double a,double b)
+bool HCN::setbr(double a,double b)
 {
 	this->br=point(a,b);
 	return true;
 }
-point HCN::gettl()
+point HCN::gettl()const
 {
 	return this->tl;
 }
-point HCN::getbr()
+point HCN::getbr()const
 {
 	return this->br;
 }
-double HCN::getS()
+double HCN::getS()const
 {
 	return abs(br.getX()-tl.getX())*abs(tl.getY()-br.getY());
 }
-double HCN::getC()
+double HCN::getC()const
 {
 	return (abs(br.getX()-tl.getX())+abs(tl.getY()-br.getY()))*2;
 }
-int main()
-{
-	
-	return 0;
-}
+
 
